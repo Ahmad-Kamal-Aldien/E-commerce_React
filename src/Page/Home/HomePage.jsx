@@ -6,7 +6,19 @@ import Silder from './../../Components/Home/Silder';
 import DiscountSection from './../../Components/Home/DiscountSection';
 import BrandFeatured from '../../Components/Brand/BrandFeatured';
 import Footer from '../../Components/Uitily/Footer';
+import { useSelector,useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import categoryActions from '../../Redux/Actions/categoryActions';
 const HomePage = () => {
+
+    
+
+
+
+
+
+
+
     return (
         <div className='font' style={{ minHeight: '670px' }}>
 
