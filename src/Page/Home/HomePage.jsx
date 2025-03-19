@@ -11,14 +11,6 @@ import { useEffect } from 'react';
 import categoryActions from '../../Redux/Actions/categoryActions';
 const HomePage = () => {
 
-    
-
-
-
-
-
-
-
     return (
         <div className='font' style={{ minHeight: '670px' }}>
 

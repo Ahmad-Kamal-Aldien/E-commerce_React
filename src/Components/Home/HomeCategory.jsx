@@ -1,24 +1,42 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, Row } from 'react-bootstrap';
 import SubTiltle from '../Uitily/SubTiltle'
 import CategoryCard from './../Category/CategoryCard';
-import clothe from "../../assets/images/clothe.png";
-import cat2 from "../../assets/images/cat2.png";
-import labtop from "../../assets/images/labtop.png";
-import sale from "../../assets/images/sale.png";
-import pic from "../../assets/images/pic.png";
 
+import { useDispatch, useSelector } from 'react-redux';
+ import categoryActions from '../../Redux/Actions/categoryActions'
 const HomeCategory = () => {
+
+    const dispatch=useDispatch();
+       
+    useEffect(()=>{
+        dispatch( categoryActions()  );
+    },[]);
+    
+    const getCategory=useSelector(state=>state.allCategory.category);
+    const getLoader=useSelector(state=>state.allCategory.loading);
+
+ 
+
+    let color=["#F4DBA4","#F4DBA4","#0034FF","#F4DBA4","#FF6262","#F4DBA4"]
+
     return (
         <Container>
             <SubTiltle title="التصنيفات" btntitle="المزيد" pathText="/allcategory" />
             <Row className='my-2 d-flex justify-content-between'>
-                <CategoryCard title="اجهزة منزلية" img={clothe} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={cat2} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={labtop} background="#0034FF" />
-                <CategoryCard title="اجهزة منزلية" img={sale} background="#F4DBA4" />
-                <CategoryCard title="اجهزة منزلية" img={clothe} background="#FF6262" />
-                <CategoryCard title="اجهزة منزلية" img={pic} background="#F4DBA4" />
+                {
+                    
+                    getCategory.data ?(
+                        getCategory.data.slice(0,5).map((item,index)=>{
+                        return (
+                        <CategoryCard key={item.id} title={item.name} img={item.image} 
+                        
+                        background={color[index] } />
+                        )
+                        } )
+                    ):<h2>No Data</h2>
+                }
+
             </Row>
         </Container>
     )

@@ -6,21 +6,22 @@ import categoryActions from '../../Redux/Actions/categoryActions'
 
 const AllCategoryPage = () => {
    
+    const getCategory=useSelector(state=>state.allCategory.category);
+    const getLoader=useSelector(state=>state.allCategory.loading);
+
     const dispatch=useDispatch();
-    const loader=useSelector(state=>state.loading);
-    const selector=useSelector(state=>state.GET_ALL_CATEGORY);
-
-   
+       
     useEffect(()=>{
-        dispatch(categoryActions());
+        dispatch( categoryActions()  );
     },[]);
-
     
+ 
+   
     return (
         <div style={{minHeight:'670px'}}>
        
             <CategoryContainer />
-            <Pagination />
+            <Pagination pageCount={getCategory.paginationResult.numberOfPages}/>
         </div>
     )
 }

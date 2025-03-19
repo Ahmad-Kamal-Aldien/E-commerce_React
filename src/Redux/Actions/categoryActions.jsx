@@ -3,7 +3,8 @@ import { GET_ALL_CATEGORY,GET_ERROR } from "../TypesRedux";
 import useGetSendAPI from '../../Hooks/useGetSendAPI'
 const categoryActions=()=>async(dispatch)=>{
     try{
-        const category= await useGetSendAPI("/api/v1/categories")
+        
+        const category= await useGetSendAPI("/api/v1/categories?limit=2")
         // const category=await baseURL.get("/api/v1/categories");
     
        
