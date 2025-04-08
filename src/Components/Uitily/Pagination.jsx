@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactPaginate from "react-paginate";
 
-const Pagination = ({pageCount}) => {
+const Pagination = ({pageCount,selectUser}) => {
 
     const handlePageClick = (selectCount) => {
 
-
+        selectUser(selectCount.selected+1);
         // selectCount.selected+1
 
      };

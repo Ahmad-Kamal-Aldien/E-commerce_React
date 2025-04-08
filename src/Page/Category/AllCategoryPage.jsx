@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import CategoryContainer from '../../Components/Category/CategoryContainer'
 import Pagination from '../../Components/Uitily/Pagination'
 import { useSelector,useDispatch } from 'react-redux'
-import categoryActions from '../../Redux/Actions/categoryActions'
+import {categoryActions,categoryActionsSpecificPage} from '../../Redux/Actions/categoryActions'
+
 
 const AllCategoryPage = () => {
    
@@ -15,13 +16,20 @@ const AllCategoryPage = () => {
         dispatch( categoryActions()  );
     },[]);
     
- 
+    
+    const selectUser=(selected)=>{
+        dispatch(categoryActionsSpecificPage(selected))
+
+    }
    
     return (
         <div style={{minHeight:'670px'}}>
        
             <CategoryContainer />
-            <Pagination pageCount={getCategory.paginationResult.numberOfPages}/>
+            <Pagination selectUser={selectUser}
+             pageCount={getCategory.paginationResult.numberOfPages}/>
+
+
         </div>
     )
 }
